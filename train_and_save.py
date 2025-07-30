@@ -16,7 +16,7 @@ data = data.drop(columns=['education'])
 
 # Encode with separate encoders
 encoders = {}
-for col in ['workclass', 'marital-status', 'occupation', 'relationship', 'race', 'gender', 'native-country']:
+for col in ['workclass', 'marital-status', 'occupation', 'relationship', 'gender', 'native-country']:
     enc = LabelEncoder()
     data[col] = enc.fit_transform(data[col])
     encoders[col] = enc  # Save encoder for that column

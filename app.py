@@ -15,7 +15,7 @@ fnlwgt = st.number_input("FNLWGT", value=100000)
 marital_status = st.selectbox("Marital Status", encoders['marital-status'].classes_)
 occupation = st.selectbox("Occupation", encoders['occupation'].classes_)
 relationship = st.selectbox("Relationship", encoders['relationship'].classes_)
-race = st.selectbox("Race", encoders['race'].classes_)
+# race = st.selectbox("Race", encoders['race'].classes_)
 gender = st.selectbox("Gender", encoders['gender'].classes_)
 capital_gain = st.number_input("Capital Gain", value=0)
 capital_loss = st.number_input("Capital Loss", value=0)
@@ -31,7 +31,7 @@ input_data = {
     'marital-status': encoders['marital-status'].transform([marital_status])[0],
     'occupation': encoders['occupation'].transform([occupation])[0],
     'relationship': encoders['relationship'].transform([relationship])[0],
-    'race': encoders['race'].transform([race])[0],
+    # 'race': encoders['race'].transform([race])[0],
     'gender': encoders['gender'].transform([gender])[0],
     'capital-gain': capital_gain,
     'capital-loss': capital_loss,
@@ -40,7 +40,14 @@ input_data = {
     'educational-num': educational_num
 }
 
-input_df = pd.DataFrame([input_data])
+# Ensure column names & order match training exactly
+required_columns = ['age', 'workclass', 'fnlwgt', 'educational-num', 'marital-status',
+                    'occupation', 'relationship', 'gender', 'capital-gain',
+                    'capital-loss', 'hours-per-week', 'native-country']
+
+input_df = pd.DataFrame([[input_data[col] for col in required_columns]],
+                        columns=required_columns)
+
 
 # Predict
 if st.button("Predict Income"):
