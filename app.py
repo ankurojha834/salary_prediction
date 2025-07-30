@@ -42,8 +42,9 @@ input_data = {
 
 # Ensure column names & order match training exactly
 required_columns = ['age', 'workclass', 'fnlwgt', 'educational-num', 'marital-status',
-                    'occupation', 'relationship', 'gender', 'capital-gain',
+                    'occupation', 'relationship',  'gender', 'capital-gain',
                     'capital-loss', 'hours-per-week', 'native-country']
+
 
 input_df = pd.DataFrame([[input_data[col] for col in required_columns]],
                         columns=required_columns)

@@ -13,6 +13,8 @@ data = data[~data['workclass'].isin(['Without-pay', 'Never-worked'])]
 data = data[(data['age'] <= 75) & (data['age'] >= 17)]
 data = data[(data['educational-num'] <= 16) & (data['educational-num'] >= 5)]
 data = data.drop(columns=['education'])
+data = data.drop(columns=['education', 'race'], errors='ignore')
+
 
 # Encode with separate encoders
 encoders = {}
